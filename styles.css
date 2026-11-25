@@ -28,7 +28,6 @@ body {
 h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
 ul, ol, dl { padding: 0; }
 a { color: inherit; }
-img { display: block; max-width: 100%; }
 [id] { scroll-margin-block-start: 1.25rem; }
 
 :focus-visible {
@@ -77,13 +76,13 @@ img { display: block; max-width: 100%; }
 
 .wordmark {
   display: grid;
-  width: 2.85rem;
+  width: 3.1rem;
   aspect-ratio: 1;
   place-content: center;
   border: 1px solid var(--gold);
   color: var(--gold);
-  font: 400 1.35rem/1 var(--serif);
-  letter-spacing: -.09em;
+  font: 400 1.18rem/1 var(--serif);
+  letter-spacing: -.06em;
   text-decoration: none;
 }
 
@@ -113,18 +112,12 @@ nav a:hover, .timeline a:hover {
 }
 
 .hero {
-  position: relative;
-  overflow: clip;
-  background: radial-gradient(ellipse at 76% 46%, var(--royal), var(--midnight) 70%);
+  background: var(--midnight);
   color: var(--ivory);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(2.5rem, 6.5vw, 6.5rem);
-  padding-block: clamp(4rem, 7.25vw, 7.25rem);
+.hero-inner {
+  padding-block: clamp(4.25rem, 8vw, 7.5rem) clamp(4.25rem, 7vw, 6.5rem);
 }
 
 .eyebrow {
@@ -146,28 +139,35 @@ h1, h2, .work-item h3, .background-panel h3 {
 }
 
 h1 {
-  margin-block: .65rem .85rem;
-  font-size: clamp(3.95rem, 8.5vw, 7.55rem);
-  letter-spacing: -.073em;
-  line-height: .97;
-  text-wrap: initial;
+  margin-block: .85rem clamp(1.8rem, 3.75vw, 3rem);
+  font-size: clamp(3.8rem, 9.2vw, 8.5rem);
+  letter-spacing: -.065em;
+  line-height: .99;
+}
+
+.hero-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.65rem clamp(2rem, 6vw, 6rem);
+  padding-top: clamp(1.2rem, 3vw, 2rem);
+  border-top: 1px solid var(--line-on-navy);
 }
 
 .hero-specialty {
-  font-size: clamp(1.12rem, 2.1vw, 1.44rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
   font-weight: 550;
-  line-height: 1.4;
+  line-height: 1.3;
+  text-wrap: balance;
 }
 
 .hero-summary {
   max-width: 34rem;
-  margin-top: 1.3rem;
   color: var(--text-on-navy);
   font-size: clamp(1.0625rem, 1.6vw, 1.2rem);
 }
 
 .action-links { gap: .9rem 1.5rem; }
-.hero .action-links { margin-top: 2rem; }
 
 .button {
   display: inline-flex;
@@ -196,32 +196,6 @@ h1 {
 }
 
 .text-link:hover { color: var(--gold); }
-
-.hero-image {
-  position: relative;
-  width: 100%;
-  max-width: 30rem;
-  justify-self: end;
-  isolation: isolate;
-}
-
-.hero-image::before {
-  position: absolute;
-  inset: .68rem -.68rem -.68rem .68rem;
-  z-index: -1;
-  border: 1px solid var(--gold);
-  opacity: .58;
-  content: "";
-}
-
-.hero-image img {
-  width: 100%;
-  height: clamp(20rem, 39vw, 34rem);
-  border: 1px solid var(--line-on-navy);
-  background: var(--royal);
-  object-fit: cover;
-  object-position: center 45%;
-}
 
 .work {
   padding-block: clamp(3.75rem, 7.5vw, 7rem);
@@ -355,16 +329,13 @@ h2 {
 
 @media (max-width: 64rem) {
   .shell { width: min(100% - 4rem, 74rem); }
-  .hero-grid { gap: clamp(1.8rem, 4.75vw, 3.75rem); }
 }
 
 @media (max-width: 48rem) {
   .shell { width: calc(100% - 2.75rem); }
-  .hero-grid, .section-header, .experience-grid { grid-template-columns: 1fr; }
-  .hero-grid { gap: 2.5rem; padding-block: 3.5rem; }
-  .hero-image { max-width: none; width: calc(100% - .48rem); justify-self: start; }
-  .hero-image img { height: clamp(14rem, 61vw, 26rem); object-position: center 47%; }
-  .hero-image::before { inset: .48rem -.48rem -.48rem .48rem; }
+  .hero-inner { padding-block: 3.85rem 3.5rem; }
+  .hero-details, .section-header, .experience-grid { grid-template-columns: 1fr; }
+  .hero-details { row-gap: 1.1rem; }
   .section-header > p { max-width: 30rem; }
 }
 
@@ -376,8 +347,8 @@ h2 {
 @media (max-width: 27rem) {
   .shell { width: calc(100% - 2.1rem); }
   .header-inner { min-height: 4.3rem; gap: .65rem; }
-  .wordmark { width: 2.5rem; font-size: 1.2rem; }
+  .wordmark { width: 2.65rem; font-size: 1.03rem; }
   nav { column-gap: clamp(.63rem, 3vw, 1.15rem); }
   nav a { font-size: .875rem; }
-  h1 { font-size: clamp(3rem, 13vw, 4rem); }
+  h1 { font-size: clamp(3.1rem, 14vw, 4.1rem); }
 }
